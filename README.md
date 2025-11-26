@@ -1,6 +1,6 @@
 # Hotel Bookings
 
-A feature-first Flutter app that showcases the hotel catalogue, supports saving favorites locally, and demonstrates modular clean architecture with BLoC/Cubit driven presentation.
+A Flutter app that showcases the hotel catalogue, supports saving favorite hotels locally, and demonstrates modular clean architecture with BLoC/Cubit driven presentation.
 
 ---
 
@@ -14,17 +14,16 @@ A feature-first Flutter app that showcases the hotel catalogue, supports saving 
 ### Setup
 ```bash
 flutter pub get
-flutter gen-l10n            # regenerate localization files when arb files change
 ```
 
 ### Run
 ```bash
-flutter run                 # launches on the connected device/emulator
+flutter run
 ```
 
 ### Tests
 ```bash
-flutter test                # runs unit + widget tests
+flutter test
 ```
 
 ---
@@ -98,7 +97,7 @@ Each feature (`hotels`, `favorites`, etc.) contains its own `data`, `domain`, an
 ---
 
 ## Scalability & Future Enhancements
-- **Scoped DI modules**: move each feature’s registrations into `features/<name>/di/module.dart` and call them from `configureDependencies()`. This keeps injector files small even as features grow.
+- **Scoped DI modules**: move each feature’s registrations into `features/<name>/di/module.dart` and call them from `configureDependencies()` in each feature's entrypoint. This keeps injector files small even as features grow nad help keeping memory usage low.
 - **Local storage backends**: replace the SharedPreferences implementation behind `ILocalStorage` with Hive/Isar for richer offline capabilities without touching the domain layer.
 - **Caching & offline**: introduce a `HotelsCacheDataSource` and switch repositories to a cache-first strategy while keeping current data contracts.
 - **Micro-feature packages**: individual features can be extracted into packages (e.g., `features/hotels`) if the app evolves into a larger workspace.
