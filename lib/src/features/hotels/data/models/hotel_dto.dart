@@ -36,6 +36,16 @@ class HotelDto {
   });
 
   factory HotelDto.fromJson(Map<String, dynamic> json) => _$HotelDtoFromJson(json);
+  factory HotelDto.fromEntity(Hotel hotel) => HotelDto(
+    hotelId: hotel.id,
+    name: hotel.name,
+    destination: hotel.destination,
+    category: hotel.category,
+    images: hotel.images.map(HotelImageDto.fromEntity).toList(),
+    ratingInfo: RatingInfoDto.fromEntity(hotel.ratingInfo),
+    bestOffer: BestOfferDto.fromEntity(hotel.bestOffer),
+    analytics: HotelAnalyticsDto.fromEntity(hotel.analytics),
+  );
 
   @JsonKey(name: 'hotel-id')
   final String hotelId;
@@ -68,6 +78,8 @@ class HotelImageDto {
   const HotelImageDto({required this.large, required this.small});
 
   factory HotelImageDto.fromJson(Map<String, dynamic> json) => _$HotelImageDtoFromJson(json);
+  factory HotelImageDto.fromEntity(HotelImage image) =>
+      HotelImageDto(large: image.large, small: image.small);
 
   final String large;
   final String small;
@@ -86,6 +98,11 @@ class RatingInfoDto {
   });
 
   factory RatingInfoDto.fromJson(Map<String, dynamic> json) => _$RatingInfoDtoFromJson(json);
+  factory RatingInfoDto.fromEntity(RatingInfo rating) => RatingInfoDto(
+    reviewsCount: rating.reviewsCount,
+    score: rating.score,
+    scoreDescription: rating.scoreDescription,
+  );
 
   @JsonKey(name: 'reviews-count')
   final int reviewsCount;
@@ -110,6 +127,13 @@ class BestOfferDto {
   });
 
   factory BestOfferDto.fromJson(Map<String, dynamic> json) => _$BestOfferDtoFromJson(json);
+  factory BestOfferDto.fromEntity(BestOffer offer) => BestOfferDto(
+    flightIncluded: offer.flightIncluded,
+    simplePricePerPerson: offer.simplePricePerPerson * 100,
+    total: offer.total * 100,
+    rooms: RoomsDto.fromEntity(offer.rooms),
+    travelDate: TravelDateDto.fromEntity(offer.travelDate),
+  );
 
   @JsonKey(name: 'flight-included')
   final bool flightIncluded;
@@ -136,6 +160,8 @@ class RoomsDto {
   const RoomsDto({required this.overall});
 
   factory RoomsDto.fromJson(Map<String, dynamic> json) => _$RoomsDtoFromJson(json);
+  factory RoomsDto.fromEntity(Rooms rooms) =>
+      RoomsDto(overall: RoomOverallDto.fromEntity(rooms.overall));
 
   final RoomOverallDto overall;
 
@@ -154,6 +180,12 @@ class RoomOverallDto {
   });
 
   factory RoomOverallDto.fromJson(Map<String, dynamic> json) => _$RoomOverallDtoFromJson(json);
+  factory RoomOverallDto.fromEntity(RoomOverall overall) => RoomOverallDto(
+    boarding: overall.boarding,
+    name: overall.name,
+    adultCount: overall.adultCount,
+    childrenCount: overall.childrenCount,
+  );
 
   final String boarding;
   final String name;
@@ -177,6 +209,8 @@ class TravelDateDto {
   const TravelDateDto({required this.days, required this.nights});
 
   factory TravelDateDto.fromJson(Map<String, dynamic> json) => _$TravelDateDtoFromJson(json);
+  factory TravelDateDto.fromEntity(TravelDate travelDate) =>
+      TravelDateDto(days: travelDate.days, nights: travelDate.nights);
 
   final int days;
   final int nights;
@@ -192,6 +226,8 @@ class HotelAnalyticsDto {
 
   factory HotelAnalyticsDto.fromJson(Map<String, dynamic> json) =>
       _$HotelAnalyticsDtoFromJson(json);
+  factory HotelAnalyticsDto.fromEntity(HotelAnalytics analytics) =>
+      HotelAnalyticsDto(currencyItem: AnalyticsCurrencyDto(currency: analytics.currency));
 
   @JsonKey(name: 'select_item.item.0')
   final AnalyticsCurrencyDto currencyItem;

@@ -58,8 +58,6 @@ class _HotelsBody extends StatelessWidget {
                   hotel: hotel,
                   buttonText: context.l10n.hotelCardSeeOffer,
                   onButtonPressed: () {},
-                  showRating: true,
-                  showBookingDetails: true,
                 );
               },
             );
