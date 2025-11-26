@@ -75,4 +75,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get favoritesSeeHotel => 'See hotel';
+
+  @override
+  String get overviewAppBarTitle => 'Overview';
+
+  @override
+  String get overviewBodyPlaceholder => 'Overview tab.';
+
+  @override
+  String get accountAppBarTitle => 'Account';
+
+  @override
+  String get accountBodyPlaceholder => 'Manage your account here.';
 }

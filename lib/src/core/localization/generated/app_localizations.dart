@@ -201,6 +201,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'See hotel'**
   String get favoritesSeeHotel;
+
+  /// No description provided for @overviewAppBarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get overviewAppBarTitle;
+
+  /// No description provided for @overviewBodyPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview tab.'**
+  String get overviewBodyPlaceholder;
+
+  /// No description provided for @accountAppBarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get accountAppBarTitle;
+
+  /// No description provided for @accountBodyPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage your account here.'**
+  String get accountBodyPlaceholder;
 }
 
 class _AppLocalizationsDelegate

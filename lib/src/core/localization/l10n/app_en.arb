@@ -74,6 +74,10 @@
   "favoritesAppBarTitle": "Favorites",
   "favoritesEmptyMessage": "You have no favorite hotels yet.",
   "favoritesErrorMessage": "Failed to load favorites.",
-  "favoritesSeeHotel": "See hotel"
+  "favoritesSeeHotel": "See hotel",
+  "overviewAppBarTitle": "Overview",
+  "overviewBodyPlaceholder": "Overview tab.",
+  "accountAppBarTitle": "Account",
+  "accountBodyPlaceholder": "Manage your account here."
 }
 
