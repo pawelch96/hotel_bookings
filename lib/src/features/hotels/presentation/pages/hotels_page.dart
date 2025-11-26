@@ -19,7 +19,7 @@ class HotelsPage extends StatelessWidget {
     return BlocProvider(
       create: (_) => HotelsBloc(getIt<IHotelsService>())..add(const HotelsRequested()),
       child: Scaffold(
-        appBar: AppBar(title: const Text('Hotels')),
+        appBar: AppBar(title: Text(context.l10n.hotelsAppBarTitle)),
         body: const _HotelsBody(),
       ),
     );
@@ -37,10 +37,10 @@ class _HotelsBody extends StatelessWidget {
           case ViewState.loading:
             return const Center(child: CircularProgressIndicator());
           case ViewState.error:
-            return const Center(child: Text('Something went wrong. Please try again.'));
+            return Center(child: Text(context.l10n.hotelsErrorMessage));
           case ViewState.idle:
             if (state.hotels.isEmpty) {
-              return const Center(child: Text('No hotels available.'));
+              return Center(child: Text(context.l10n.hotelsEmptyMessage));
             }
             return ListView.separated(
               padding: AppTheme.defaultPadding,
@@ -49,12 +49,18 @@ class _HotelsBody extends StatelessWidget {
               itemBuilder: (context, index) {
                 if (index == 0) {
                   return Text(
-                    '${state.hotelCount} Hotels found',
+                    context.l10n.hotelsCountLabel(state.hotelCount),
                     style: context.textTheme.titleMedium,
                   );
                 }
                 final hotel = state.hotels[index - 1];
-                return HotelCard(hotel: hotel, buttonText: 'See offer', onButtonPressed: () {});
+                return HotelCard(
+                  hotel: hotel,
+                  buttonText: context.l10n.hotelCardSeeOffer,
+                  onButtonPressed: () {},
+                  showRating: true,
+                  showBookingDetails: true,
+                );
               },
             );
         }

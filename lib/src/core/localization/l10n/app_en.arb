@@ -1,0 +1,75 @@
+{
+  "@@locale": "en",
+  "hotelsAppBarTitle": "Hotels",
+  "hotelsErrorMessage": "Something went wrong. Please try again.",
+  "hotelsEmptyMessage": "No hotels available.",
+  "hotelsCountLabel": "{count} Hotels found",
+  "@hotelsCountLabel": {
+    "description": "Label describing how many hotels were found",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hotelCardSeeOffer": "See offer",
+  "bookingTravelDays": "{count} days",
+  "@bookingTravelDays": {
+    "description": "Number of travel days",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "bookingTravelNights": "{count} nights",
+  "@bookingTravelNights": {
+    "description": "Number of travel nights",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "bookingGuests": "{adultCount} adults, {childrenCount} children",
+  "@bookingGuests": {
+    "description": "Guests information containing adults and children",
+    "placeholders": {
+      "adultCount": {
+        "type": "int"
+      },
+      "childrenCount": {
+        "type": "int"
+      }
+    }
+  },
+  "bookingFlightIncluded": "Flight incl.",
+  "bookingFlightNotIncluded": "Flight not incl.",
+  "bookingPriceFromPrefix": "from",
+  "bookingPricePerPerson": "{price} p.P.",
+  "@bookingPricePerPerson": {
+    "description": "Price per person label",
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "hotelRatingScore": "{score} / 5.0",
+  "@hotelRatingScore": {
+    "description": "Rating score text",
+    "placeholders": {
+      "score": {
+        "type": "num"
+      }
+    }
+  },
+  "hotelRatingReviews": "{count} reviews",
+  "@hotelRatingReviews": {
+    "description": "Number of reviews",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}
+

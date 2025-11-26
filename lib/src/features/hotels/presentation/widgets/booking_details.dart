@@ -19,8 +19,8 @@ class BookingDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               BookingDetailRow(
-                firstDetail: '${hotel.bestOffer.travelDate.days} days',
-                secondDetail: '${hotel.bestOffer.travelDate.nights} nights',
+                firstDetail: context.l10n.bookingTravelDays(hotel.bestOffer.travelDate.days),
+                secondDetail: context.l10n.bookingTravelNights(hotel.bestOffer.travelDate.nights),
               ),
               const SizedBox(height: AppTheme.spaceXSmall),
               BookingDetailRow(
@@ -29,9 +29,13 @@ class BookingDetails extends StatelessWidget {
               ),
               const SizedBox(height: AppTheme.spaceXSmall),
               BookingDetailRow(
-                firstDetail:
-                    '${hotel.bestOffer.rooms.overall.adultCount} adults, ${hotel.bestOffer.rooms.overall.childrenCount} children',
-                secondDetail: hotel.bestOffer.flightIncluded ? 'Flight incl.' : 'Flight not incl.',
+                firstDetail: context.l10n.bookingGuests(
+                  hotel.bestOffer.rooms.overall.adultCount,
+                  hotel.bestOffer.rooms.overall.childrenCount,
+                ),
+                secondDetail: hotel.bestOffer.flightIncluded
+                    ? context.l10n.bookingFlightIncluded
+                    : context.l10n.bookingFlightNotIncluded,
               ),
             ],
           ),
@@ -43,7 +47,7 @@ class BookingDetails extends StatelessWidget {
           children: [
             RichText(
               text: TextSpan(
-                text: 'from ',
+                text: '${context.l10n.bookingPriceFromPrefix} ',
                 style: context.textTheme.bodyMedium,
                 children: [
                   TextSpan(
@@ -54,7 +58,9 @@ class BookingDetails extends StatelessWidget {
               ),
             ),
             Text(
-              '${CurrencyFormatter.format(hotel.bestOffer.simplePricePerPerson)} p.P.',
+              context.l10n.bookingPricePerPerson(
+                CurrencyFormatter.format(hotel.bestOffer.simplePricePerPerson),
+              ),
               style: context.textTheme.bodyMedium,
             ),
           ],

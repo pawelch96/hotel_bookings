@@ -33,7 +33,7 @@ class HotelRating extends StatelessWidget {
                 ),
                 const SizedBox(width: AppTheme.spaceXSmall),
                 Text(
-                  '${ratingInfo.score} / 5.0',
+                  context.l10n.hotelRatingScore(ratingInfo.score),
                   style: context.textTheme.labelSmall?.copyWith(color: AppColors.contentInverse),
                 ),
               ],
@@ -42,7 +42,7 @@ class HotelRating extends StatelessWidget {
         ),
         const SizedBox(width: AppTheme.spaceSmall),
         Text(
-          '${ratingInfo.scoreDescription} (${ratingInfo.reviewsCount} reviews)',
+          '${ratingInfo.scoreDescription} (${context.l10n.hotelRatingReviews(ratingInfo.reviewsCount)})',
           style: context.textTheme.labelSmall?.copyWith(color: AppColors.contentInverse),
         ),
       ],

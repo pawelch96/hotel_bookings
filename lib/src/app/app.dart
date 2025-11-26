@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_bookings/src/app/router/app_router.dart';
+import 'package:hotel_bookings/src/core/localization/generated/app_localizations.dart';
 import 'package:hotel_bookings/src/core/theme/app_theme.dart';
 
 class HotelBookingsApp extends StatelessWidget {
@@ -11,6 +12,8 @@ class HotelBookingsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       routerDelegate: _appRouter.delegate(),
       routeInformationParser: _appRouter.defaultRouteParser(),
       theme: AppTheme.light,
