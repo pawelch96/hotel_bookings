@@ -26,34 +26,40 @@ class HotelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          HotelCardImageStack(hotel: hotel, showRating: showRating),
-          const SizedBox(height: AppTheme.spaceRegular),
-          Padding(
-            padding: AppTheme.defaultHorizontalPadding,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                HotelCategory(category: hotel.category),
-                const SizedBox(height: AppTheme.spaceXSmall),
-                Text(hotel.name, style: context.textTheme.titleMedium),
-                Text(hotel.destination, style: context.textTheme.bodyMedium),
-                const SizedBox(height: AppTheme.spaceRegular),
-                const Divider(color: AppColors.borderSecondary, height: 1),
-                const SizedBox(height: AppTheme.spaceRegular),
-                if (showBookingDetails) ...[
-                  BookingDetails(hotel: hotel),
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        borderRadius: AppTheme.defaultRadius,
+        boxShadow: [AppTheme.cardShadowPrimary, AppTheme.cardShadowSecondary],
+      ),
+      child: Card(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HotelCardImageStack(hotel: hotel, showRating: showRating),
+            const SizedBox(height: AppTheme.spaceRegular),
+            Padding(
+              padding: AppTheme.defaultHorizontalPadding,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  HotelCategory(category: hotel.category),
+                  const SizedBox(height: AppTheme.spaceXSmall),
+                  Text(hotel.name, style: context.textTheme.titleMedium),
+                  Text(hotel.destination, style: context.textTheme.bodyMedium),
+                  const SizedBox(height: AppTheme.spaceRegular),
+                  const Divider(color: AppColors.borderSecondary, height: 1),
+                  const SizedBox(height: AppTheme.spaceRegular),
+                  if (showBookingDetails) ...[
+                    BookingDetails(hotel: hotel),
+                    const SizedBox(height: AppTheme.spaceRegular),
+                  ],
+                  HotelCardButton(buttonText: buttonText, onButtonPressed: onButtonPressed),
                   const SizedBox(height: AppTheme.spaceRegular),
                 ],
-                HotelCardButton(buttonText: buttonText, onButtonPressed: onButtonPressed),
-                const SizedBox(height: AppTheme.spaceRegular),
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

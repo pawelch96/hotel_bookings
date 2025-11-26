@@ -14,10 +14,16 @@ class FavoriteIcon extends StatelessWidget {
   Widget build(BuildContext context) => BlocSelector<FavoritesCubit, FavoritesState, bool>(
     selector: (state) => state.favorites.any((fav) => fav.id == hotel.id),
     builder: (_, isFavorite) {
-      return IconButton(
-        color: AppColors.contentInverse,
-        icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border, size: AppTheme.iconSmall),
-        onPressed: () => context.read<FavoritesCubit>().toggleFavorite(hotel),
+      return DecoratedBox(
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          boxShadow: [AppTheme.favoriteIconShadow],
+        ),
+        child: IconButton(
+          color: AppColors.contentInverse,
+          icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border, size: AppTheme.iconSmall),
+          onPressed: () => context.read<FavoritesCubit>().toggleFavorite(hotel),
+        ),
       );
     },
   );

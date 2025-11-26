@@ -37,8 +37,27 @@ class AppTheme {
   static const spaceRegular = 16.0;
 
   static const iconSmall = 20.0;
-
   static const iconXSmall = 14.0;
+
+  static const BoxShadow cardShadowPrimary = BoxShadow(
+    color: Color(0x1A000000),
+    offset: Offset(0, 8),
+    blurRadius: 24,
+    spreadRadius: 0,
+  );
+
+  static const BoxShadow cardShadowSecondary = BoxShadow(
+    color: Color(0x14000000),
+    offset: Offset.zero,
+    blurRadius: 24,
+    spreadRadius: 0,
+  );
+
+  static const favoriteIconShadow = BoxShadow(
+    color: Color(0x1A000000),
+    offset: Offset(0, 4),
+    blurRadius: 10,
+  );
 
   static ThemeData get light {
     final textTheme = TextTheme(
@@ -122,10 +141,8 @@ class AppTheme {
       cardTheme: const CardThemeData(
         color: AppColors.backgroundPrimary,
         margin: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
-          borderRadius: defaultRadius,
-          side: BorderSide(color: AppColors.borderSecondary),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: defaultRadius),
+        elevation: 0,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         elevation: 8,
