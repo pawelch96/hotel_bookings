@@ -22,7 +22,23 @@ class AppTheme {
   const AppTheme._();
 
   static const defaultPadding = EdgeInsets.all(16);
+  static const defaultHorizontalPadding = EdgeInsets.symmetric(horizontal: 16);
+  static const defaultHorizontalXSmallPadding = EdgeInsets.symmetric(horizontal: 4);
   static const defaultRadius = BorderRadius.all(Radius.circular(5));
+  static const defaultRadiusSmall = BorderRadius.all(Radius.circular(2));
+  static const defaultImageRadius = BorderRadius.only(
+    topLeft: Radius.circular(5),
+    topRight: Radius.circular(5),
+  );
+
+  static const spaceXSmall = 4.0;
+  static const spaceSmall = 8.0;
+  static const spaceMedium = 12.0;
+  static const spaceRegular = 16.0;
+
+  static const iconSmall = 20.0;
+
+  static const iconXSmall = 14.0;
 
   static ThemeData get light {
     final textTheme = TextTheme(

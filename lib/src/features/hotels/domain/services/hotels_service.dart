@@ -1,9 +1,9 @@
-import '../../../shared/domain/exceptions/domain_exception.dart';
-import '../entities/hotel.dart';
-import '../repositories/hotels_repository.dart';
+import 'package:hotel_bookings/src/features/shared/domain/exceptions/domain_exception.dart';
+import 'package:hotel_bookings/src/features/hotels/domain/entities/hotel.dart';
+import 'package:hotel_bookings/src/features/hotels/domain/repositories/hotels_repository.dart';
 
 abstract class IHotelsService {
-  Future<List<Hotel>> fetchHotels();
+  Future<HotelsResult> fetchHotels();
 }
 
 class HotelsService implements IHotelsService {
@@ -12,7 +12,7 @@ class HotelsService implements IHotelsService {
   final IHotelsRepository _repository;
 
   @override
-  Future<List<Hotel>> fetchHotels() async {
+  Future<HotelsResult> fetchHotels() async {
     try {
       return await _repository.fetchHotels();
     } on DomainException {

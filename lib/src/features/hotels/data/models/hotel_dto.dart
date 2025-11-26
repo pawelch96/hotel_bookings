@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../domain/entities/hotel.dart';
+import 'package:hotel_bookings/src/features/hotels/domain/entities/hotel.dart';
 
 part 'hotel_dto.g.dart';
 
@@ -16,7 +16,10 @@ class HotelResponseDto {
 
   Map<String, dynamic> toJson() => _$HotelResponseDtoToJson(this);
 
-  List<Hotel> toEntities() => hotels.map((hotel) => hotel.toEntity()).toList();
+  HotelsResult toEntity() => HotelsResult(
+    hotelCount: hotelCount,
+    hotels: hotels.map((hotel) => hotel.toEntity()).toList(),
+  );
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
@@ -103,6 +106,7 @@ class BestOfferDto {
     required this.simplePricePerPerson,
     required this.total,
     required this.rooms,
+    required this.travelDate,
   });
 
   factory BestOfferDto.fromJson(Map<String, dynamic> json) => _$BestOfferDtoFromJson(json);
@@ -113,30 +117,31 @@ class BestOfferDto {
   final int simplePricePerPerson;
   final int total;
   final RoomsDto rooms;
+  @JsonKey(name: 'travel-date')
+  final TravelDateDto travelDate;
 
   Map<String, dynamic> toJson() => _$BestOfferDtoToJson(this);
 
   BestOffer toEntity() => BestOffer(
     flightIncluded: flightIncluded,
-    simplePricePerPerson: simplePricePerPerson,
-    total: total,
+    simplePricePerPerson: simplePricePerPerson ~/ 100,
+    total: total ~/ 100,
     rooms: rooms.toEntity(),
+    travelDate: travelDate.toEntity(),
   );
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class RoomsDto {
-  const RoomsDto({required this.overall, required this.travelDate});
+  const RoomsDto({required this.overall});
 
   factory RoomsDto.fromJson(Map<String, dynamic> json) => _$RoomsDtoFromJson(json);
 
   final RoomOverallDto overall;
-  @JsonKey(name: 'travel-date')
-  final TravelDateDto travelDate;
 
   Map<String, dynamic> toJson() => _$RoomsDtoToJson(this);
 
-  Rooms toEntity() => Rooms(overall: overall.toEntity(), travelDate: travelDate.toEntity());
+  Rooms toEntity() => Rooms(overall: overall.toEntity());
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)

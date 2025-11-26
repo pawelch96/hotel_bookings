@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../../../shared/domain/exceptions/domain_exception.dart';
-import '../models/hotel_dto.dart';
+import 'package:hotel_bookings/src/features/shared/domain/exceptions/domain_exception.dart';
+import 'package:hotel_bookings/src/features/hotels/data/models/hotel_dto.dart';
 
 abstract class IHotelsRemoteDataSource {
   Future<HotelResponseDto> fetchHotels();

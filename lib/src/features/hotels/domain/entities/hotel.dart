@@ -1,5 +1,15 @@
 import 'package:equatable/equatable.dart';
 
+class HotelsResult extends Equatable {
+  const HotelsResult({required this.hotelCount, required this.hotels});
+
+  final int hotelCount;
+  final List<Hotel> hotels;
+
+  @override
+  List<Object?> get props => [hotelCount, hotels];
+}
+
 class Hotel extends Equatable {
   const Hotel({
     required this.id,
@@ -65,25 +75,26 @@ class BestOffer extends Equatable {
     required this.simplePricePerPerson,
     required this.total,
     required this.rooms,
+    required this.travelDate,
   });
 
   final bool flightIncluded;
   final int simplePricePerPerson;
   final int total;
   final Rooms rooms;
-
-  @override
-  List<Object?> get props => [flightIncluded, simplePricePerPerson, total, rooms];
-}
-
-class Rooms extends Equatable {
-  const Rooms({required this.overall, required this.travelDate});
-
-  final RoomOverall overall;
   final TravelDate travelDate;
 
   @override
-  List<Object?> get props => [overall, travelDate];
+  List<Object?> get props => [flightIncluded, simplePricePerPerson, total, rooms, travelDate];
+}
+
+class Rooms extends Equatable {
+  const Rooms({required this.overall});
+
+  final RoomOverall overall;
+
+  @override
+  List<Object?> get props => [overall];
 }
 
 class RoomOverall extends Equatable {

@@ -76,6 +76,9 @@ BestOfferDto _$BestOfferDtoFromJson(Map<String, dynamic> json) => BestOfferDto(
   simplePricePerPerson: (json['simple-price-per-person'] as num).toInt(),
   total: (json['total'] as num).toInt(),
   rooms: RoomsDto.fromJson(json['rooms'] as Map<String, dynamic>),
+  travelDate: TravelDateDto.fromJson(
+    json['travel-date'] as Map<String, dynamic>,
+  ),
 );
 
 Map<String, dynamic> _$BestOfferDtoToJson(BestOfferDto instance) =>
@@ -84,18 +87,15 @@ Map<String, dynamic> _$BestOfferDtoToJson(BestOfferDto instance) =>
       'simple-price-per-person': instance.simplePricePerPerson,
       'total': instance.total,
       'rooms': instance.rooms.toJson(),
+      'travel-date': instance.travelDate.toJson(),
     };
 
 RoomsDto _$RoomsDtoFromJson(Map<String, dynamic> json) => RoomsDto(
   overall: RoomOverallDto.fromJson(json['overall'] as Map<String, dynamic>),
-  travelDate: TravelDateDto.fromJson(
-    json['travel-date'] as Map<String, dynamic>,
-  ),
 );
 
 Map<String, dynamic> _$RoomsDtoToJson(RoomsDto instance) => <String, dynamic>{
   'overall': instance.overall.toJson(),
-  'travel-date': instance.travelDate.toJson(),
 };
 
 RoomOverallDto _$RoomOverallDtoFromJson(Map<String, dynamic> json) =>

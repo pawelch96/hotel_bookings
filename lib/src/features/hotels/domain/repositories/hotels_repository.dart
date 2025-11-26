@@ -1,5 +1,5 @@
-import '../entities/hotel.dart';
+import 'package:hotel_bookings/src/features/hotels/domain/entities/hotel.dart';
 
 abstract class IHotelsRepository {
-  Future<List<Hotel>> fetchHotels();
+  Future<HotelsResult> fetchHotels();
 }
