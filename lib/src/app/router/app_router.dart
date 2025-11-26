@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:hotel_bookings/src/features/account/presentation/view/pages/account_page.dart';
-import 'package:hotel_bookings/src/features/favorites/presentation/view/pages/favorites_page.dart';
-import 'package:hotel_bookings/src/features/hotels/presentation/view/pages/hotels_page.dart';
-import 'package:hotel_bookings/src/features/overview/presentation/view/pages/overview_page.dart';
+import 'package:hotel_bookings/src/features/account/presentation/pages/account_page.dart';
+import 'package:hotel_bookings/src/features/favorites/presentation/pages/favorites_page.dart';
+import 'package:hotel_bookings/src/features/hotels/presentation/pages/hotels_page.dart';
+import 'package:hotel_bookings/src/features/overview/presentation/pages/overview_page.dart';
 
 part 'app_router.gr.dart';
 part 'main_page.dart';
