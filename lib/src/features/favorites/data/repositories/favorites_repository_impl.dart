@@ -20,12 +20,6 @@ class FavoritesRepository implements IFavoritesRepository {
   }
 
   @override
-  Future<bool> isFavorite(String hotelId) async {
-    final favorites = await _localDataSource.fetchFavorites();
-    return favorites.any((favorite) => favorite.id == hotelId);
-  }
-
-  @override
   Future<void> removeFavorite(String hotelId) async {
     final favorites = await _localDataSource.fetchFavorites();
     await _localDataSource.saveFavorites(

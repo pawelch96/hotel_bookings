@@ -44,8 +44,10 @@ class HotelCard extends StatelessWidget {
                 const SizedBox(height: AppTheme.spaceRegular),
                 const Divider(color: AppColors.borderSecondary, height: 1),
                 const SizedBox(height: AppTheme.spaceRegular),
-                if (showBookingDetails) BookingDetails(hotel: hotel),
-                const SizedBox(height: AppTheme.spaceRegular),
+                if (showBookingDetails) ...[
+                  BookingDetails(hotel: hotel),
+                  const SizedBox(height: AppTheme.spaceRegular),
+                ],
                 HotelCardButton(buttonText: buttonText, onButtonPressed: onButtonPressed),
                 const SizedBox(height: AppTheme.spaceRegular),
               ],

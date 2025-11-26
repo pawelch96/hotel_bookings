@@ -4,5 +4,4 @@ abstract class IFavoritesRepository {
   Future<List<Hotel>> fetchFavorites();
   Future<void> addFavorite(Hotel hotel);
   Future<void> removeFavorite(String hotelId);
-  Future<bool> isFavorite(String hotelId);
 }

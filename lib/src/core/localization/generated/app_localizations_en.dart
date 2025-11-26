@@ -63,4 +63,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String hotelRatingReviews(int count) {
     return '$count reviews';
   }
+
+  @override
+  String get favoritesAppBarTitle => 'Favorites';
+
+  @override
+  String get favoritesEmptyMessage => 'You have no favorite hotels yet.';
+
+  @override
+  String get favoritesErrorMessage => 'Failed to load favorites.';
+
+  @override
+  String get favoritesSeeHotel => 'See hotel';
 }

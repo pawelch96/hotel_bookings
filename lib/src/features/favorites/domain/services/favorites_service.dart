@@ -1,22 +1,32 @@
+import 'dart:async';
+
 import 'package:hotel_bookings/src/features/hotels/domain/entities/hotel.dart';
 import 'package:hotel_bookings/src/features/favorites/domain/repositories/favorites_repository.dart';
 import 'package:hotel_bookings/src/features/shared/domain/exceptions/domain_exception.dart';
 
 abstract class IFavoritesService {
-  Future<List<Hotel>> fetchFavorites();
+  Future<void> fetchFavorites();
   Future<void> toggleFavorite(Hotel hotel);
-  Future<bool> isFavorite(String hotelId);
+  Stream<List<Hotel>> get favoritesStream;
 }
 
 class FavoritesService implements IFavoritesService {
   FavoritesService(this._repository);
 
   final IFavoritesRepository _repository;
+  final StreamController<List<Hotel>> _favoritesController =
+      StreamController<List<Hotel>>.broadcast();
+
+  List<Hotel> _favorites = const [];
 
   @override
-  Future<List<Hotel>> fetchFavorites() async {
+  Stream<List<Hotel>> get favoritesStream => _favoritesController.stream;
+
+  @override
+  Future<void> fetchFavorites() async {
     try {
-      return await _repository.fetchFavorites();
+      _favorites = await _repository.fetchFavorites();
+      _favoritesController.add(_favorites);
     } on DomainException {
       rethrow;
     } catch (error) {
@@ -26,22 +36,22 @@ class FavoritesService implements IFavoritesService {
 
   @override
   Future<void> toggleFavorite(Hotel hotel) async {
-    final isFav = await isFavorite(hotel.id);
-    if (isFav) {
-      await _repository.removeFavorite(hotel.id);
-    } else {
-      await _repository.addFavorite(hotel);
-    }
-  }
-
-  @override
-  Future<bool> isFavorite(String hotelId) async {
     try {
-      return _repository.isFavorite(hotelId);
+      final isFavorite = _favorites.any((fav) => fav.id == hotel.id);
+      if (isFavorite) {
+        await _repository.removeFavorite(hotel.id);
+      } else {
+        await _repository.addFavorite(hotel);
+      }
+      await fetchFavorites();
     } on DomainException {
       rethrow;
     } catch (error) {
-      throw UnknownDomainException('Failed to check favorite', cause: error);
+      throw UnknownDomainException('Failed to update favorites', cause: error);
     }
+  }
+
+  void dispose() {
+    _favoritesController.close();
   }
 }

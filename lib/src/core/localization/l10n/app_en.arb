@@ -70,6 +70,10 @@
         "type": "int"
       }
     }
-  }
+  },
+  "favoritesAppBarTitle": "Favorites",
+  "favoritesEmptyMessage": "You have no favorite hotels yet.",
+  "favoritesErrorMessage": "Failed to load favorites.",
+  "favoritesSeeHotel": "See hotel"
 }
 

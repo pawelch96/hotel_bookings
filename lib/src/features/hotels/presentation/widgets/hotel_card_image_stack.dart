@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:hotel_bookings/src/core/theme/app_theme.dart';
+import 'package:hotel_bookings/src/features/favorites/presentation/widgets/favorite_icon.dart';
 import 'package:hotel_bookings/src/features/hotels/domain/entities/hotel.dart';
 import 'package:hotel_bookings/src/features/hotels/presentation/widgets/hotel_rating.dart';
-import 'package:hotel_bookings/src/features/favorites/presentation/widgets/favorite_icon.dart';
 
 class HotelCardImageStack extends StatelessWidget {
   const HotelCardImageStack({super.key, required this.hotel, required this.showRating});
@@ -30,11 +30,7 @@ class HotelCardImageStack extends StatelessWidget {
             bottom: AppTheme.spaceRegular,
             child: HotelRating(ratingInfo: hotel.ratingInfo),
           ),
-        const Positioned(
-          top: AppTheme.spaceMedium,
-          right: AppTheme.spaceMedium,
-          child: FavoriteIcon(),
-        ),
+        Positioned(top: 0, right: 0, child: FavoriteIcon(hotel: hotel)),
       ],
     );
   }

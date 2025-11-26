@@ -177,6 +177,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} reviews'**
   String hotelRatingReviews(int count);
+
+  /// No description provided for @favoritesAppBarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get favoritesAppBarTitle;
+
+  /// No description provided for @favoritesEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You have no favorite hotels yet.'**
+  String get favoritesEmptyMessage;
+
+  /// No description provided for @favoritesErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load favorites.'**
+  String get favoritesErrorMessage;
+
+  /// No description provided for @favoritesSeeHotel.
+  ///
+  /// In en, this message translates to:
+  /// **'See hotel'**
+  String get favoritesSeeHotel;
 }
 
 class _AppLocalizationsDelegate
