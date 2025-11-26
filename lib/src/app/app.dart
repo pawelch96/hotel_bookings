@@ -21,7 +21,7 @@ class HotelBookingsApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        routerDelegate: _appRouter.delegate(),
+        routerDelegate: _appRouter.delegate(deepLinkBuilder: (deepLink) => deepLink),
         routeInformationParser: _appRouter.defaultRouteParser(),
         theme: AppTheme.light,
       ),
