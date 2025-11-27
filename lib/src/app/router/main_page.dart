@@ -8,49 +8,32 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const tabs = <BottomNavigationBarItem>[
+    final tabs = <BottomNavigationBarItem>[
       BottomNavigationBarItem(
-        icon: Icon(Icons.home_outlined),
-        activeIcon: Icon(Icons.home),
-        label: 'Overview',
+        icon: const Icon(Icons.home_outlined),
+        activeIcon: const Icon(Icons.home),
+        label: context.l10n.overviewAppBarTitle,
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.hotel_outlined),
-        activeIcon: Icon(Icons.hotel),
-        label: 'Hotels',
+        icon: const Icon(Icons.hotel_outlined),
+        activeIcon: const Icon(Icons.hotel),
+        label: context.l10n.hotelsAppBarTitle,
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.favorite_border),
-        activeIcon: Icon(Icons.favorite),
-        label: 'Favorites',
+        icon: const Icon(Icons.favorite_border),
+        activeIcon: const Icon(Icons.favorite),
+        label: context.l10n.favoritesAppBarTitle,
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.person_outline),
-        activeIcon: Icon(Icons.person),
-        label: 'Account',
+        icon: const Icon(Icons.person_outline),
+        activeIcon: const Icon(Icons.person),
+        label: context.l10n.accountAppBarTitle,
       ),
     ];
 
     return AutoTabsRouter(
       routes: const [OverviewRoute(), HotelsRoute(), FavoritesRoute(), AccountRoute()],
-      transitionBuilder: (context, child, animation) {
-        final tabsRouter = AutoTabsRouter.of(context);
-        final previousIndex = tabsRouter.previousIndex;
-
-        if (previousIndex == null || previousIndex == tabsRouter.activeIndex) {
-          return child;
-        }
-
-        final isForward = tabsRouter.activeIndex > previousIndex;
-        final beginOffset = isForward ? const Offset(1, 0) : const Offset(-1, 0);
-
-        final curvedAnimation = CurvedAnimation(parent: animation, curve: Curves.easeOut);
-
-        return SlideTransition(
-          position: Tween<Offset>(begin: beginOffset, end: Offset.zero).animate(curvedAnimation),
-          child: child,
-        );
-      },
+      transitionBuilder: (_, child, __) => child,
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
 

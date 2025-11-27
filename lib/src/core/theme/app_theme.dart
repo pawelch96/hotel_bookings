@@ -111,21 +111,17 @@ class AppTheme {
       ),
     );
 
-    final colorScheme =
-        ColorScheme.fromSeed(
-          seedColor: AppColors.backgroundBrand,
-          brightness: Brightness.light,
-          primary: AppColors.backgroundBrand,
-          secondary: AppColors.interactionPrimary,
-          surface: AppColors.backgroundPrimary,
-          onSurface: AppColors.contentPrimary,
-        ).copyWith(
-          onPrimary: AppColors.contentInverse,
-          onSecondary: AppColors.contentInverse,
-          error: Colors.red,
-          onError: AppColors.contentInverse,
-          outline: AppColors.borderPrimary,
-        );
+    final colorScheme = ColorScheme.fromSeed(
+      seedColor: AppColors.backgroundBrand,
+      brightness: Brightness.light,
+      primary: AppColors.backgroundBrand,
+      secondary: AppColors.interactionPrimary,
+      surface: AppColors.backgroundPrimary,
+      onSurface: AppColors.contentPrimary,
+      onPrimary: AppColors.contentInverse,
+      onSecondary: AppColors.contentInverse,
+      outline: AppColors.borderPrimary,
+    );
 
     return ThemeData(
       useMaterial3: true,

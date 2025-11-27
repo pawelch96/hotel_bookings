@@ -4,6 +4,7 @@ import 'package:hotel_bookings/src/features/account/presentation/pages/account_p
 import 'package:hotel_bookings/src/features/favorites/presentation/pages/favorites_page.dart';
 import 'package:hotel_bookings/src/features/hotels/presentation/pages/hotels_page.dart';
 import 'package:hotel_bookings/src/features/overview/presentation/pages/overview_page.dart';
+import 'package:hotel_bookings/src/features/shared/presentation/extensions/context_extensions.dart';
 
 part 'app_router.gr.dart';
 part 'main_page.dart';

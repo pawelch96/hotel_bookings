@@ -30,7 +30,6 @@ class BookingDetailRow extends StatelessWidget {
             style: context.textTheme.bodySmall,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.end,
           ),
         ),
       ],

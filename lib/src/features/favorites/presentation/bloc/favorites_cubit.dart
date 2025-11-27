@@ -11,7 +11,7 @@ import 'package:hotel_bookings/src/features/shared/presentation/view_state/view_
 part 'favorites_state.dart';
 
 class FavoritesCubit extends Cubit<FavoritesState> {
-  FavoritesCubit(this._service) : super(const FavoritesState.initial());
+  FavoritesCubit(this._service) : super(const FavoritesState());
 
   final IFavoritesService _service;
   StreamSubscription<List<Hotel>>? _favoritesSubscription;
