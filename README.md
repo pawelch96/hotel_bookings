@@ -2,6 +2,10 @@
 
 A Flutter app that showcases the hotel catalogue, supports saving favorite hotels locally, and demonstrates modular clean architecture with BLoC/Cubit driven presentation.
 
+## Video Demo
+
+<video src="https://github.com/user-attachments/assets/cbb7694a-cac4-47d3-acdd-7a47b8e1fec6"></video>
+
 ---
 
 ## Getting Started
