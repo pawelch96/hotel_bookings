@@ -43,12 +43,16 @@ class _FavoritesBody extends StatelessWidget {
               separatorBuilder: (_, __) => const SizedBox(height: AppTheme.spaceRegular),
               itemBuilder: (context, index) {
                 final hotel = state.favorites[index];
-                return HotelCard(
-                  hotel: hotel,
-                  showRating: true,
-                  showBookingDetails: false,
-                  buttonText: context.l10n.favoritesSeeHotel,
-                  onButtonPressed: () {},
+                return AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 250),
+                  child: HotelCard(
+                    key: ValueKey(hotel.id),
+                    hotel: hotel,
+                    showRating: true,
+                    showBookingDetails: false,
+                    buttonText: context.l10n.favoritesSeeHotel,
+                    onButtonPressed: () {},
+                  ),
                 );
               },
             );
